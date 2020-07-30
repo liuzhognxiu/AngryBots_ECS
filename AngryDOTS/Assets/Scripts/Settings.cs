@@ -15,12 +15,9 @@ public class Settings : MonoBehaviour
 	}
 
 	public float enemyCollisionRadius = .3f;
-	public static float EnemyCollisionRadius
-	{
-		get { return instance.enemyCollisionRadius; }
-	}
+	public static float EnemyCollisionRadius => instance.enemyCollisionRadius;
 
-	public static Vector3 PlayerPosition
+    public static Vector3 PlayerPosition
 	{
 		get { return instance.player.position; }
 	}

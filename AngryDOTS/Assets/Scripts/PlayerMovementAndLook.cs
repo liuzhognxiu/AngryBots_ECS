@@ -116,21 +116,7 @@ public class PlayerMovementAndLook : MonoBehaviour
         playerAnimator.SetFloat("Forward", forw);
         playerAnimator.SetFloat("Strafe", stra);
     }
-
-    //Player Collision
-    void OnTriggerEnter(Collider theCollider)
-    {
-        if (!theCollider.CompareTag("Enemy"))
-            return;
-
-        playerHealth--;
-
-        if (playerHealth <= 0)
-        {
-            Settings.PlayerDied();
-        }
-    }
-
+    
     public void PlayerDied()
     {
         if (isDead)

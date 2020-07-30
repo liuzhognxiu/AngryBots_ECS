@@ -8,14 +8,16 @@ public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
     public float speed = 2f;
 
     [Header("Life Settings")]
-    public float enemyHealth = 5f;
+    public float enemyHealth = 50f;
 
     Rigidbody rigidBody;
 
+    ShootTextProController shootTextProController;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        shootTextProController = GetComponent<ShootTextProController>();
     }
 
     void Update()
@@ -32,19 +34,19 @@ public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
     }
 
     //Enemy Collision
-    // void OnTriggerEnter(Collider theCollider)
-    // {
-    //     if (!theCollider.CompareTag("Bullet"))
-    //         return;
-    //
-    //     enemyHealth--;
-    //     Debug.Log("怪物血量：" + enemyHealth);
-    //     if (enemyHealth <= 0)
-    //     {
-    //         Destroy(gameObject);
-    //         BulletImpactPool.PlayBulletImpact(transform.position);
-    //     }
-    // }
+    void OnTriggerEnter(Collider theCollider)
+    {
+        if (!theCollider.CompareTag("Bullet"))
+            return;
+    
+        enemyHealth--;
+        shootTextProController.CreatShootText("-1", this.transform);
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+            BulletImpactPool.PlayBulletImpact(transform.position);
+        }
+    }
 
     public void Convert(Entity entity, EntityManager manager, GameObjectConversionSystem conversionSystem)
     {
