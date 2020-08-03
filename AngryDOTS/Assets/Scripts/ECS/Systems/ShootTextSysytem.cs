@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Assets.Scripts.ECS.Data;
+using Unity.Entities;
 using Unity.Transforms;
 
 [UpdateInGroup(typeof(InitializationSystemGroup))]
@@ -6,20 +7,12 @@ public class ShootTextSysytem : ComponentSystem
 {
     protected override void OnUpdate()
     {
-        Entities.ForEach((Entity entity, ref Health health, ref Translation pos) =>
+        Entities.ForEach((Entity entity, ref Health health, ref Translation pos,ref Damage damage) =>
         {
-            if (health.Value <= 0)
+            if (health.beHitValue > 0)
             {
-                if (EntityManager.HasComponent(entity, typeof(PlayerTag)))
-                {
-                    Settings.PlayerDied();
-                }
-
-                else if (EntityManager.HasComponent(entity, typeof(EnemyTag)))
-                {
-                    PostUpdateCommands.DestroyEntity(entity);
-                    BulletImpactPool.PlayBulletImpact(pos.Value);
-                }
+                ColliderPool.PlayBulletImpact(pos.Value,health.beHitValue,entity.Index);
+                health.beHitValue = 0f;
             }
         });
     }

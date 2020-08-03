@@ -1,4 +1,5 @@
-﻿using Unity.Burst;
+﻿using Assets.Scripts.ECS.Data;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
@@ -16,18 +17,19 @@ public class CollisionSystem : JobComponentSystem
 
     protected override void OnCreate()
     {
-        playerGroup = GetEntityQuery(typeof(Health), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<PlayerTag>());
-        enemyGroup = GetEntityQuery(typeof(Health), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<EnemyTag>());
+        playerGroup = GetEntityQuery(typeof(Health), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<PlayerTag>(), ComponentType.ReadOnly<Damage>());
+        enemyGroup = GetEntityQuery(typeof(Health), ComponentType.ReadOnly<Translation>(), ComponentType.ReadOnly<EnemyTag>(), ComponentType.ReadOnly<Damage>());
         bulletGroup = GetEntityQuery(typeof(TimeToLive), ComponentType.ReadOnly<Translation>());
     }
 
-    [BurstCompile]
+    // [BurstCompile]
     struct CollisionJob : IJobChunk
     {
         public float radius;
 
         public ArchetypeChunkComponentType<Health> healthType;
         [ReadOnly] public ArchetypeChunkComponentType<Translation> translationType;
+        [ReadOnly] public ArchetypeChunkComponentType<Damage> damageType;
 
         [DeallocateOnJobCompletion]
         [ReadOnly] public NativeArray<Translation> transToTestAgainst;
@@ -37,12 +39,14 @@ public class CollisionSystem : JobComponentSystem
         {
             var chunkHealths = chunk.GetNativeArray(healthType);
             var chunkTranslations = chunk.GetNativeArray(translationType);
+            var chunkDamages = chunk.GetNativeArray(damageType);
 
             for (int i = 0; i < chunk.Count; i++)
             {
-                float damage = 0f;
+                // float damage = 0f;
                 Health health = chunkHealths[i];
                 Translation pos = chunkTranslations[i];
+                Damage damage = chunkDamages[i];
 
                 for (int j = 0; j < transToTestAgainst.Length; j++)
                 {
@@ -50,14 +54,10 @@ public class CollisionSystem : JobComponentSystem
 
                     if (CheckCollision(pos.Value, pos2.Value, radius))
                     {
-                        damage += 1;
+                        health.Value -= damage.value;
+                        health.beHitValue = damage.value;
+                        chunkHealths[i] = health;
                     }
-                }
-
-                if (damage > 0)
-                {
-                    health.Value -= damage;
-                    chunkHealths[i] = health;
                 }
             }
         }
@@ -67,6 +67,7 @@ public class CollisionSystem : JobComponentSystem
     {
         var healthType = GetArchetypeChunkComponentType<Health>(false);
         var translationType = GetArchetypeChunkComponentType<Translation>(true);
+        var damageType = GetArchetypeChunkComponentType<Damage>(true);
 
         float enemyRadius = Settings.EnemyCollisionRadius;
         float playerRadius = Settings.PlayerCollisionRadius;
@@ -76,6 +77,7 @@ public class CollisionSystem : JobComponentSystem
             radius = enemyRadius * enemyRadius,
             healthType = healthType,
             translationType = translationType,
+            damageType = damageType,
             transToTestAgainst = bulletGroup.ToComponentDataArray<Translation>(Allocator.TempJob)
         };
 
@@ -89,6 +91,7 @@ public class CollisionSystem : JobComponentSystem
             radius = playerRadius * playerRadius,
             healthType = healthType,
             translationType = translationType,
+            damageType = damageType,
             transToTestAgainst = enemyGroup.ToComponentDataArray<Translation>(Allocator.TempJob)
         };
 

@@ -992,7 +992,7 @@ PrefabInstance:
     - target: {fileID: 114167452494013206, guid: 387be402c6e254edb8f04a699355f406,
         type: 3}
       propertyPath: spreadShot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114167452494013206, guid: 387be402c6e254edb8f04a699355f406,
         type: 3}
@@ -1115,6 +1115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415310049}
   - component: {fileID: 1415310048}
+  - component: {fileID: 1415310050}
   m_Layer: 0
   m_Name: Bullet Impact Object Pool
   m_TagString: Untagged
@@ -1137,6 +1138,9 @@ MonoBehaviour:
   bulletHitPrefab: {fileID: 1607228222434220, guid: 3c6a9770554a2499da6dc5e68b870e15,
     type: 3}
   impactPoolSize: 100
+  damagePoolSize: 100
+  shootTextProController: {fileID: 2505915943407265724, guid: 10fe868e94184d84881eb2d68820ea43,
+    type: 3}
 --- !u!4 &1415310049
 Transform:
   m_ObjectHideFlags: 0
@@ -1151,6 +1155,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1415310050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415310047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507d4f7f9b95f764a960ec770bf7c145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootTextProController: {fileID: 2505915943407265724, guid: 10fe868e94184d84881eb2d68820ea43,
+    type: 3}
 --- !u!1 &1457675941
 GameObject:
   m_ObjectHideFlags: 3
