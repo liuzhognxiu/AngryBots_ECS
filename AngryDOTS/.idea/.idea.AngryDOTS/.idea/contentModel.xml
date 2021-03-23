@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_AngryDOTS.681377176.00" t="ExcludeRecursive" />
+    <e p="F:\性能测试\AngryBots_ECS-master\AngryDOTS" t="IncludeRecursive">
+      <e p="AngryDOTS.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Joystick Pack" t="Include">
+          <e p="Examples" t="Include">
+            <e p="JoystickPlayerExample.cs" t="Include" />
+            <e p="JoystickSetterExample.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Base" t="Include">
+              <e p="Joystick.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="DynamicJoystickEditor.cs" t="Include" />
+              <e p="FloatingJoystickEditor.cs" t="Include" />
+              <e p="JoystickEditor.cs" t="Include" />
+              <e p="VariableJoystickEditor.cs" t="Include" />
+            </e>
+            <e p="Joysticks" t="Include">
+              <e p="DynamicJoystick.cs" t="Include" />
+              <e p="FixedJoystick.cs" t="Include" />
+              <e p="FloatingJoystick.cs" t="Include" />
+              <e p="VariableJoystick.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="BulletImpactPool.cs" t="Include" />
+          <e p="ColliderPool.cs" t="Include" />
+          <e p="ECS" t="Include">
+            <e p="Conversion" t="Include">
+              <e p="MoveForwardConversion.cs" t="Include" />
+              <e p="PlayerToEntityConversion.cs" t="Include" />
+            </e>
+            <e p="Data" t="Include">
+              <e p="DamageComponent.cs" t="Include" />
+              <e p="EnemyTagComponent.cs" t="Include" />
+              <e p="HealthComponent.cs" t="Include" />
+              <e p="HitDamageComponent.cs" t="Include" />
+              <e p="MoveForwardComponent.cs" t="Include" />
+              <e p="MoveSpeedComponent.cs" t="Include" />
+              <e p="PlayerTagComponent.cs" t="Include" />
+              <e p="TimeToLiveComponent.cs" t="Include" />
+            </e>
+            <e p="Systems" t="Include">
+              <e p="CollisionSystem.cs" t="Include" />
+              <e p="MoveForwardSystem.cs" t="Include" />
+              <e p="PlayerTransformUpdateSystem.cs" t="Include" />
+              <e p="RemoveDeadSystem.cs" t="Include" />
+              <e p="ShootTextSysytem.cs" t="Include" />
+              <e p="TimedDestroySystem.cs" t="Include" />
+              <e p="TurnTowardsPlayerSystem.cs" t="Include" />
+            </e>
+          </e>
+          <e p="EnemyBehaviour.cs" t="Include" />
+          <e p="EnemySpawner.cs" t="Include" />
+          <e p="PlayerMovementAndLook.cs" t="Include" />
+          <e p="PlayerShooting.cs" t="Include" />
+          <e p="ProjectileBehaviour.cs" t="Include" />
+          <e p="Settings.cs" t="Include" />
+        </e>
+        <e p="ShootTextPro" t="Include">
+          <e p="Example" t="Include">
+            <e p="Resources" t="Include">
+              <e p="TestShootTextPro.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="ShootTextComponent.cs" t="Include" />
+            <e p="ShootTextInfo.cs" t="Include" />
+            <e p="ShootTextProController.cs" t="Include" />
+          </e>
+        </e>
+        <e p="VFX (Shared)" t="Include">
+          <e p="Shader" t="Include">
+            <e p="Refraction.shader" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="BackgroundAndCharacters" t="Include">
+              <e p="EnemySelfIlluminationReflective.shader" t="Include" />
+              <e p="Fallback.shader" t="Include" />
+              <e p="ReflectiveBackgroundPlanar.shader" t="Include" />
+            </e>
+            <e p="Fx" t="Include">
+              <e p="Additive.shader" t="Include" />
+              <e p="InterlacePatternAdditive.shader" t="Include" />
+              <e p="InterlacePatternBlend.shader" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

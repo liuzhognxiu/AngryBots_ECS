@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000002, guid: d235646aaa0510e46bd9ad6cd956ac82,
     type: 2}
   m_UseShadowmask: 0
@@ -177,7 +178,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220979866}
-  m_LocalRotation: {x: 0.1724006, y: 0.82731766, z: -0.38972017, w: 0.36598048}
+  m_LocalRotation: {x: 0.17240062, y: 0.82731766, z: -0.38972014, w: 0.36598057}
   m_LocalPosition: {x: -8.095254, y: 5.072219, z: 4.8838463}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -307,9 +308,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &454054844
 MeshRenderer:
@@ -325,6 +326,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -378,16 +380,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 567612661}
     m_Modifications:
-    - target: {fileID: 8135886326569738825, guid: 56fae09712773584fb63896d473a98ee,
-        type: 3}
-      propertyPath: m_Name
-      value: Dynamic Joystick
-      objectReference: {fileID: 0}
-    - target: {fileID: 8135886326569738825, guid: 56fae09712773584fb63896d473a98ee,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8135886326569738822, guid: 56fae09712773584fb63896d473a98ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -493,15 +485,25 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8135886327475159579, guid: 56fae09712773584fb63896d473a98ee,
+    - target: {fileID: 8135886326569738825, guid: 56fae09712773584fb63896d473a98ee,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 700
+      propertyPath: m_Name
+      value: Dynamic Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135886326569738825, guid: 56fae09712773584fb63896d473a98ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8135886327475159578, guid: 56fae09712773584fb63896d473a98ee,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135886327475159579, guid: 56fae09712773584fb63896d473a98ee,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56fae09712773584fb63896d473a98ee, type: 3}
@@ -796,11 +798,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 567612661}
     m_Modifications:
-    - target: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
-        type: 3}
-      propertyPath: m_Name
-      value: Variable Joystick
-      objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -906,6 +903,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230,
+        type: 3}
+      propertyPath: m_Name
+      value: Variable Joystick
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec536a7718376554185e4a856d5ae230, type: 3}
 --- !u!224 &1006519642 stripped
@@ -921,6 +923,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1462190659316002, guid: 387be402c6e254edb8f04a699355f406, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1500293480320252, guid: 387be402c6e254edb8f04a699355f406, type: 3}
       propertyPath: m_Name
       value: Player
@@ -969,21 +975,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114445215679820892, guid: 387be402c6e254edb8f04a699355f406,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1496275639}
-    - target: {fileID: 114445215679820892, guid: 387be402c6e254edb8f04a699355f406,
-        type: 3}
-      propertyPath: leftVariableJoystick
-      value: 
-      objectReference: {fileID: 1395568417}
-    - target: {fileID: 114445215679820892, guid: 387be402c6e254edb8f04a699355f406,
-        type: 3}
-      propertyPath: dynamicJoystick
-      value: 
-      objectReference: {fileID: 483909214}
     - target: {fileID: 114167452494013206, guid: 387be402c6e254edb8f04a699355f406,
         type: 3}
       propertyPath: DynamicJoystick
@@ -999,6 +990,21 @@ PrefabInstance:
       propertyPath: useECS
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114445215679820892, guid: 387be402c6e254edb8f04a699355f406,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1496275639}
+    - target: {fileID: 114445215679820892, guid: 387be402c6e254edb8f04a699355f406,
+        type: 3}
+      propertyPath: leftVariableJoystick
+      value: 
+      objectReference: {fileID: 1395568417}
+    - target: {fileID: 114445215679820892, guid: 387be402c6e254edb8f04a699355f406,
+        type: 3}
+      propertyPath: dynamicJoystick
+      value: 
+      objectReference: {fileID: 483909214}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 387be402c6e254edb8f04a699355f406, type: 3}
 --- !u!1 &1379798260
@@ -1041,8 +1047,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379798260}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 0.4575472, g: 0.72401524, b: 1, a: 1}
   m_Intensity: 0.5
   m_Range: 10
@@ -1138,9 +1145,6 @@ MonoBehaviour:
   bulletHitPrefab: {fileID: 1607228222434220, guid: 3c6a9770554a2499da6dc5e68b870e15,
     type: 3}
   impactPoolSize: 100
-  damagePoolSize: 100
-  shootTextProController: {fileID: 2505915943407265724, guid: 10fe868e94184d84881eb2d68820ea43,
-    type: 3}
 --- !u!4 &1415310049
 Transform:
   m_ObjectHideFlags: 0
@@ -1350,7 +1354,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496275636}
-  m_LocalRotation: {x: 0.1724006, y: 0.82731766, z: -0.38972017, w: 0.36598048}
+  m_LocalRotation: {x: 0.17240062, y: 0.82731766, z: -0.38972014, w: 0.36598057}
   m_LocalPosition: {x: -8.095254, y: 5.072219, z: 4.8838463}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1475,8 +1479,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552434841}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
   m_Intensity: 0.11
   m_Range: 10

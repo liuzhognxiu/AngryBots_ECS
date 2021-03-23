@@ -9,15 +9,13 @@ public class PlayerShooting : MonoBehaviour
     public bool useECS = false;
     public bool spreadShot = false;
 
-    [Header("General")]
-    public Transform gunBarrel;
+    [Header("General")] public Transform gunBarrel;
     public ParticleSystem shotVFX;
     public AudioSource shotAudio;
     public float fireRate = .1f;
     public int spreadAmount = 20;
 
-    [Header("Bullets")]
-    public GameObject bulletPrefab;
+    [Header("Bullets")] public GameObject bulletPrefab;
 
     float timer;
 
@@ -30,8 +28,12 @@ public class PlayerShooting : MonoBehaviour
     {
         if (useECS)
         {
-            manager = World.Active.EntityManager;
-            bulletEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(bulletPrefab, World.Active);
+            manager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            var setting = new GameObjectConversionSettings()
+            {
+                DestinationWorld = World.DefaultGameObjectInjectionWorld,
+            };
+            bulletEntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(bulletPrefab, setting);
         }
     }
 
@@ -103,8 +105,8 @@ public class PlayerShooting : MonoBehaviour
     {
         Entity bullet = manager.Instantiate(bulletEntityPrefab);
 
-        manager.SetComponentData(bullet, new Translation { Value = gunBarrel.position });
-        manager.SetComponentData(bullet, new Rotation { Value = Quaternion.Euler(rotation) });
+        manager.SetComponentData(bullet, new Translation {Value = gunBarrel.position});
+        manager.SetComponentData(bullet, new Rotation {Value  = Quaternion.Euler(rotation)});
     }
 
     void SpawnBulletSpreadECS(Vector3 rotation)
@@ -127,13 +129,13 @@ public class PlayerShooting : MonoBehaviour
             {
                 tempRot.y = (rotation.y + 3 * y) % 360;
 
-                manager.SetComponentData(bullets[index], new Translation { Value = gunBarrel.position });
-                manager.SetComponentData(bullets[index], new Rotation { Value = Quaternion.Euler(tempRot) });
+                manager.SetComponentData(bullets[index], new Translation {Value = gunBarrel.position});
+                manager.SetComponentData(bullets[index], new Rotation {Value = Quaternion.Euler(tempRot)});
 
                 index++;
             }
         }
+
         bullets.Dispose();
     }
 }
-
